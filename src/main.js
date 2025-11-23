@@ -11,6 +11,7 @@ const pinia = createPinia()
 app.use(pinia)
 
 const auth = useAuthStore()
+const DEFAULT_TITLE = 'Engir · Learning Streams'
 
 router.beforeEach(async (to, from, next) => {
   if (!auth.initialized) {
@@ -31,11 +32,23 @@ router.beforeEach(async (to, from, next) => {
     return next(fallback)
   }
 
-  if (to.name === 'login' && auth.isAuthenticated) {
+  if ((to.name === 'login' || to.name === 'signup') && auth.isAuthenticated) {
     return next(auth.userRole === 'teacher' ? { name: 'teacher-dashboard' } : { name: 'student-dashboard' })
   }
 
+  if (to.name === 'teacher-preview' && auth.isAuthenticated) {
+    return next({ name: 'teacher-dashboard' })
+  }
+
+  if (to.name === 'student-preview' && auth.isAuthenticated) {
+    return next({ name: 'student-dashboard' })
+  }
+
   return next()
+})
+
+router.afterEach((to) => {
+  document.title = to.meta?.title || DEFAULT_TITLE
 })
 
 app.use(router)

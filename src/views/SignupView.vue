@@ -1,20 +1,20 @@
 <template>
   <section class="mx-auto max-w-3xl space-y-8">
     <header class="text-center">
-      <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Create account</p>
-      <h2 class="mt-3 text-4xl font-semibold">Join Engir as a teacher or student.</h2>
-      <p class="mt-2 text-slate-300">
+      <p class="text-xs uppercase tracking-[0.4em] text-slate-500">Create account</p>
+      <h2 class="mt-3 text-4xl font-semibold text-slate-900">Join Engir as a teacher or student.</h2>
+      <p class="mt-2 text-slate-600">
         All signups are free. Teachers can launch livestream classrooms, and students can explore sessions instantly.
       </p>
     </header>
 
-    <form class="space-y-6 rounded-3xl border border-white/10 bg-night-800/70 p-8 shadow-xl" @submit.prevent="submit">
+    <form class="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-xl" @submit.prevent="submit">
       <div class="flex flex-wrap gap-4 text-sm">
-        <label class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 px-4 py-2">
+        <label class="flex cursor-pointer items-center gap-2 rounded-full border border-slate-200 px-4 py-2">
           <input v-model="form.role" type="radio" value="student" />
           <span>Student</span>
         </label>
-        <label class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 px-4 py-2">
+        <label class="flex cursor-pointer items-center gap-2 rounded-full border border-slate-200 px-4 py-2">
           <input v-model="form.role" type="radio" value="teacher" />
           <span>Teacher</span>
         </label>
@@ -27,7 +27,7 @@
             v-model="form.full_name"
             type="text"
             required
-            class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+            class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
             placeholder="Avery Harper"
           />
         </label>
@@ -37,7 +37,7 @@
             v-model="form.email"
             type="email"
             required
-            class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+            class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
             placeholder="you@example.com"
           />
         </label>
@@ -50,7 +50,7 @@
           type="password"
           minlength="8"
           required
-          class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+          class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
           placeholder="At least 8 characters"
         />
       </label>
@@ -61,7 +61,7 @@
           <input
             v-model="form.headline"
             type="text"
-            class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+            class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
             placeholder="Film professor & presenter"
           />
         </label>
@@ -70,7 +70,7 @@
           <input
             v-model="form.profile_url"
             type="url"
-            class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+            class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
             placeholder="https://your-site.com"
           />
         </label>
@@ -80,7 +80,7 @@
         <span class="text-slate-300">Timezone</span>
         <select
           v-model="form.timezone"
-          class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+          class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
         >
           <option disabled value="">Select your timezone</option>
           <option v-for="tz in timezoneOptions" :key="tz" :value="tz">
@@ -94,7 +94,7 @@
         <textarea
           v-model="form.bio"
           rows="4"
-          class="mt-1 w-full rounded-2xl border border-white/10 bg-night-950/60 px-4 py-3 text-white focus:border-sky-400 focus:outline-none"
+          class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-800 focus:border-sky-400 focus:outline-none"
           placeholder="Tell us a bit about yourself."
         />
       </label>
@@ -102,13 +102,13 @@
       <button
         type="submit"
         :disabled="submitting"
-        class="w-full rounded-2xl bg-sky-500 px-4 py-3 text-center text-sm font-semibold text-night-900 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-600"
+        class="w-full rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:translate-y-0.5 disabled:cursor-not-allowed disabled:bg-slate-400"
       >
         {{ submitting ? 'Creating account…' : 'Create account' }}
       </button>
     </form>
 
-    <p v-if="error" class="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 text-center text-sm text-rose-100">
+    <p v-if="error" class="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-center text-sm text-rose-600">
       {{ error }}
     </p>
   </section>
@@ -116,12 +116,13 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import { registerStudent, registerTeacher } from '@/api/auth'
 import { useAuthStore } from '@/state/authStore'
 
 const router = useRouter()
+const route = useRoute()
 const auth = useAuthStore()
 const error = ref('')
 const submitting = ref(false)
@@ -174,6 +175,11 @@ const submit = async () => {
     }
 
     await auth.login({ username: form.email, password: form.password })
+    const redirect = route.query.redirect
+    if (typeof redirect === 'string') {
+      router.push(redirect)
+      return
+    }
     if (auth.userRole === 'teacher') {
       router.push({ name: 'teacher-dashboard' })
     } else {

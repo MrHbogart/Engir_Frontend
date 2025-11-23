@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { ACCESS_TOKEN_KEY } from '@/constants'
 
-const apiBaseURL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001/api'
+const apiBaseURL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api'
 
 const client = axios.create({
   baseURL: apiBaseURL,
